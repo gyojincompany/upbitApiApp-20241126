@@ -88,8 +88,7 @@ class MainWindow(QMainWindow, form_class):  # 슬롯 클래스
         # if btcPrice <= 134660000:
         #     self.alarm_label.setText("매수!!!");
         # self.up_style()
-        self.price_label.setText(f"{coinPrice:.0f}")
-
+        self.price_label.setText(f"{coinPrice:,.0f}")
 
         print(f"비트코인의 이전 가격:{int(self.coinPrev)}")
         if self.coinPrev < int(coinPrice):  # 오름
@@ -101,7 +100,8 @@ class MainWindow(QMainWindow, form_class):  # 슬롯 클래스
         else:  # 내림
             print("내림")
             self.price_label.setStyleSheet("color:blue;")
-        self.coinPrev = int(self.price_label.text())  # 이전 값
+        self.coinPrev = int(str(self.price_label.text()).replace(",",""))  
+        # 이전 값 문자열에서 , 제거 후 interger 변환 추가
     
     def up_style(self):  # 변화율이 +면 코인가격이 빨간색으로, -면 파란색으로 표시
         print(self.changeRate)
