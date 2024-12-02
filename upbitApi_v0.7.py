@@ -103,12 +103,12 @@ class MainWindow(QMainWindow, form_class):  # 슬롯 클래스
         self.coinPrev = int(str(self.price_label.text()).replace(",",""))  
         # 이전 값 문자열에서 , 제거 후 interger 변환 추가
     
-    def up_style(self):  # 변화율이 +면 코인가격이 빨간색으로, -면 파란색으로 표시
-        print(self.changeRate)
-        if "-" in self.changeRate:
-            self.price_label.setStyleSheet("color:blue;")
-        else:
-            self.price_label.setStyleSheet("color:red;")
+    # def up_style(self):  # 변화율이 +면 코인가격이 빨간색으로, -면 파란색으로 표시
+    #     print(self.changeRate)
+    #     if "-" in self.changeRate:
+    #         self.price_label.setStyleSheet("color:blue;")
+    #     else:
+    #         self.price_label.setStyleSheet("color:red;")
 
 
 app = QApplication(sys.argv)
