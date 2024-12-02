@@ -72,20 +72,20 @@ class MainWindow(QMainWindow, form_class):  # 슬롯 클래스
     def comboBox_active(self):  # 콤보박스의 메뉴가 변경되었을 때 호출되는 메소드
         selected_ticker = self.ticker_combobox.currentText()  # 현재 콤보박스에서 선택된 메뉴 텍스트 가져오기
         self.ticker_label.setText(selected_ticker)
-        self.upbitapi.close()  # while문의 무한루프가 정지
-        self.upbitapi = UpbitApi(f"KRW-{selected_ticker}")  # 시그널 클래스로 객체 생성
+        self.upbitapi.close()  # 시그널 클래스의 while문 무한루프가 정지->시그널 클래스 객체가 삭제
+        self.upbitapi = UpbitApi(f"KRW-{selected_ticker}")  # 시그널 클래스로 새로운 객체 생성
         self.upbitapi.coinDataSent.connect(self.printCoinData)  # 시그널 함수와 슬롯 함수를 연결
         self.upbitapi.start()
 
-    def printCoinData(self, btcPrice):  # 슬롯 함수->시그널 함수에서 보내준 데이터를 받아주는 함수
-        print(f"비트코인의 현재가격: {btcPrice}")
+    def printCoinData(self, coinPrice):  # 슬롯 함수->시그널 함수에서 보내준 데이터를 받아주는 함수
+        print(f"비트코인의 현재가격: {coinPrice}")
 
         # if btcPrice >= 134673000:
         #     self.alarm_label.setText("매도!!!");
         # if btcPrice <= 134660000:
         #     self.alarm_label.setText("매수!!!");
 
-        self.price_label.setText(f"{btcPrice:,.0f}")
+        self.price_label.setText(f"{coinPrice:,.0f}")
 
 
 
@@ -93,8 +93,4 @@ app = QApplication(sys.argv)
 win = MainWindow()
 win.show()
 sys.exit(app.exec_())
-
-
-
-
 
