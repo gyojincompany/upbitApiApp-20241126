@@ -35,10 +35,10 @@
      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
     </property>
    </widget>
-   <widget class="QLabel" name="label_2">
+   <widget class="QLabel" name="ticker_label">
     <property name="geometry">
      <rect>
-      <x>40</x>
+      <x>80</x>
       <y>90</y>
       <width>151</width>
       <height>51</height>
@@ -46,11 +46,13 @@
     </property>
     <property name="font">
      <font>
-      <pointsize>12</pointsize>
+      <pointsize>18</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
      </font>
     </property>
     <property name="text">
-     <string>비트코인 현재가격 :</string>
+     <string>BTC</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_3">
@@ -82,6 +84,21 @@
     </property>
     <property name="text">
      <string>매수 매도</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="ticker_combobox">
+    <property name="geometry">
+     <rect>
+      <x>140</x>
+      <y>20</y>
+      <width>201</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
     </property>
    </widget>
   </widget>
